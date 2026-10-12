@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!--
+      Canonical / Open Graph URLs use the placeholder domain below.
+      Replace https://example.com with the real production domain before deploy.
+    -->
+    <title>Benyich Salah Eddine | Full Stack Developer</title>
+    <meta
+      name="description"
+      content="Développeur web full stack à Casablanca. Découvrez le portfolio et les projets Laravel, React.js, PHP, Node.js et MySQL de Benyich Salah Eddine."
+    />
+    <meta name="author" content="Benyich Salah Eddine" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fafaf9" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1c1917" />
+    <link rel="canonical" href="https://example.com/" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Benyich Salah Eddine — Portfolio" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="Benyich Salah Eddine | Full Stack Developer" />
+    <meta
+      property="og:description"
+      content="Développeur web full stack à Casablanca. Découvrez le portfolio et les projets Laravel, React.js, PHP, Node.js et MySQL de Benyich Salah Eddine."
+    />
+    <meta property="og:url" content="https://example.com/" />
+    <meta property="og:image" content="https://example.com/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Benyich Salah Eddine — Développeur Full Stack, Casablanca, Maroc"
+    />
+    <meta property="og:profile:first_name" content="Salah Eddine" />
+    <meta property="og:profile:last_name" content="Benyich" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Benyich Salah Eddine | Full Stack Developer" />
+    <meta
+      name="twitter:description"
+      content="Développeur web full stack à Casablanca. Découvrez le portfolio et les projets Laravel, React.js, PHP, Node.js et MySQL de Benyich Salah Eddine."
+    />
+    <meta name="twitter:image" content="https://example.com/og-image.png" />
+    <meta
+      name="twitter:image:alt"
+      content="Benyich Salah Eddine — Développeur Full Stack, Casablanca, Maroc"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@700;800&family=Instrument+Serif:ital@1&family=Cairo:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          var dark =
+            stored === 'dark' ||
+            (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          if (dark) document.documentElement.classList.add('dark')
+        } catch (e) {}
+      })()
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://example.com/#website",
+            "url": "https://example.com/",
+            "name": "Benyich Salah Eddine — Portfolio",
+            "inLanguage": "fr",
+            "description": "Portfolio de Benyich Salah Eddine, développeur web full stack à Casablanca."
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://example.com/#profilepage",
+            "url": "https://example.com/",
+            "inLanguage": "fr",
+            "name": "Benyich Salah Eddine | Full Stack Developer",
+            "isPartOf": { "@id": "https://example.com/#website" },
+            "mainEntity": { "@id": "https://example.com/#person" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://example.com/#person",
+            "name": "Benyich Salah Eddine",
+            "givenName": "Salah Eddine",
+            "familyName": "Benyich",
+            "jobTitle": "Technicien Spécialisé en Développement Digital – Full Stack",
+            "description": "Développeur web full stack junior, spécialisé en Laravel, React.js, PHP, Node.js et MySQL.",
+            "url": "https://example.com/",
+            "image": "https://example.com/og-image.png",
+            "email": "mailto:salaheddineben777@gmail.com",
+            "telephone": "+212700816423",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Casablanca",
+              "addressCountry": "MA"
+            },
+            "alumniOf": [
+              {
+                "@type": "EducationalOrganization",
+                "name": "OFPPT – CFPMS Tit Mellil"
+              },
+              {
+                "@type": "EducationalOrganization",
+                "name": "Lycée Moulay Ismail"
+              }
+            ],
+            "knowsAbout": [
+              "Full Stack Development",
+              "Laravel",
+              "PHP",
+              "React.js",
+              "Node.js",
+              "REST API",
+              "MySQL",
+              "MongoDB",
+              "JavaScript",
+              "Tailwind CSS"
+            ],
+            "knowsLanguage": ["fr", "ar", "en"]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
