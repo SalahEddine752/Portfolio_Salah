@@ -75,7 +75,7 @@ export function Navbar() {
             <LanguageSwitcher className="hidden lg:inline-flex" />
             <ThemeToggle />
             <a
-              href="/CV_Benyich_SalahEddine.pdf"
+              href="/CV_Professionnel_SalahEddine_Benyich.pdf"
               target="_blank"
               rel="noopener noreferrer"
               aria-label={t.ui.navbar.cvAria}
