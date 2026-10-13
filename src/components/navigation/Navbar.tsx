@@ -5,6 +5,7 @@ import { useI18n } from '../../i18n/context'
 import { useScrollSpy } from '../../hooks/useScrollSpy'
 import { useScrolled } from '../../hooks/useScrolled'
 import { cn } from '../../lib/cn'
+import { CV_FILE_HREF, CV_FILE_NAME } from '../../lib/cvFile'
 import { LanguageSwitcher } from '../ui/LanguageSwitcher'
 import { ThemeToggle } from '../ui/ThemeToggle'
 import { MobileMenu } from './MobileMenu'
@@ -32,14 +33,19 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          'fixed inset-x-0 top-0 z-40 border-b pt-[env(safe-area-inset-top)] backdrop-blur-md transition-[background-color,border-color,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
+          'fixed inset-x-0 top-0 z-50 border-b bg-[var(--nav-bg)] pt-[env(safe-area-inset-top)] backdrop-blur-md transition-[background-color,border-color,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
           scrolled ? 'border-line shadow-[var(--sh-xs)]' : 'border-transparent',
         )}
-        style={{ backgroundColor: scrolled ? 'var(--nav-bg)' : 'transparent' }}
       >
         <div className="container-site flex h-16 items-center justify-between gap-4">
-          <a href="#accueil" className="font-display text-lg font-extrabold tracking-tight text-ink">
-            Salah Eddine<span className="text-brand">.</span>
+          <a
+            href="#accueil"
+            title="Salah Eddine Benyich"
+            className="min-w-0 shrink font-signature text-lg font-semibold leading-none tracking-tight text-ink sm:text-xl xl:text-2xl"
+          >
+            <span className="block truncate whitespace-nowrap">
+              Salah Eddine <span className="text-brand">Benyich</span>
+            </span>
           </a>
 
           <nav aria-label={t.ui.navbar.mainNavAria} className="hidden lg:block">
@@ -75,9 +81,8 @@ export function Navbar() {
             <LanguageSwitcher className="hidden lg:inline-flex" />
             <ThemeToggle />
             <a
-              href="/CV_Professionnel_SalahEddine_Benyich.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={CV_FILE_HREF}
+              download={CV_FILE_NAME}
               aria-label={t.ui.navbar.cvAria}
               className="hidden h-10 items-center gap-2 rounded-sm border border-line px-3 text-sm font-medium text-ink transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-px hover:border-brand/45 hover:shadow-sm active:translate-y-0 md:inline-flex"
             >

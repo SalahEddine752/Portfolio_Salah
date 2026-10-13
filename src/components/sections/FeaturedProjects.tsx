@@ -7,7 +7,6 @@ import { Reveal } from '../ui/Reveal'
 export function FeaturedProjects() {
   const { t, cv } = useI18n()
   const featured = cv.projects.filter((project) => project.featured)
-  const [lead, ...rest] = featured
 
   return (
     <Section id="projets" ariaLabel={t.ui.projects.aria}>
@@ -18,20 +17,12 @@ export function FeaturedProjects() {
         description={t.ui.projects.description}
       />
 
-      <div className="space-y-6">
-        {lead && (
-          <Reveal>
-            <ProjectCard project={lead} featured />
+      <div className="projects-grid grid gap-6 md:grid-cols-2">
+        {featured.map((project, index) => (
+          <Reveal key={project.id} delay={index * 60} className="h-full">
+            <ProjectCard project={project} className="h-full" />
           </Reveal>
-        )}
-
-        <div className="grid gap-6 lg:grid-cols-2">
-          {rest.map((project, index) => (
-            <Reveal key={project.id} delay={index * 60} className="h-full">
-              <ProjectCard project={project} className="h-full" />
-            </Reveal>
-          ))}
-        </div>
+        ))}
       </div>
     </Section>
   )

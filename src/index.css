@@ -53,6 +53,7 @@
   --font-body: 'Inter', 'Cairo', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
   --font-accent: 'Instrument Serif', 'Cairo', Georgia, serif;
+  --font-signature: 'Caveat', 'Cairo', ui-sans-serif, system-ui, cursive;
 
   --color-paper: var(--c-paper);
   --color-surface: var(--c-surface);
@@ -229,7 +230,192 @@
 
 /* Signature gradient (used sparingly) */
 .bg-signature {
-  background-image: linear-gradient(135deg, #4338ca 0%, #7c3aed 50%, #0891b2 100%);
+  background-image: linear-gradient(135deg, #4338ca 0%, #7c3aed 100%);
+}
+
+/* ---------------------------------------------------------------
+   Portrait — refined gradient frame + always-on animated glow.
+   All decorative layers sit behind the photo and are pointer-events:none.
+--------------------------------------------------------------- */
+.portrait-wrap {
+  isolation: isolate;
+}
+
+.portrait-aura {
+  background-image:
+    radial-gradient(58% 52% at 20% 24%, rgb(67 56 202 / 0.42), transparent 72%),
+    radial-gradient(52% 48% at 82% 30%, rgb(124 58 237 / 0.38), transparent 74%),
+    radial-gradient(48% 52% at 68% 88%, rgb(8 145 178 / 0.26), transparent 72%);
+  filter: blur(26px);
+  opacity: 0.52;
+  animation: portrait-aura 14s ease-in-out infinite;
+  transition: opacity 600ms var(--ease-out-expo);
+  will-change: transform, opacity;
+}
+
+.dark .portrait-aura {
+  background-image:
+    radial-gradient(58% 52% at 20% 24%, rgb(99 102 241 / 0.46), transparent 72%),
+    radial-gradient(52% 48% at 82% 30%, rgb(139 92 246 / 0.42), transparent 74%),
+    radial-gradient(48% 52% at 68% 88%, rgb(34 211 238 / 0.24), transparent 72%);
+  opacity: 0.5;
+}
+
+/* Thin, offset outline that hugs the frame shape and scales with it */
+.portrait-outline {
+  position: absolute;
+  inset: -7px;
+  z-index: -1;
+  border: 1px solid rgb(67 56 202 / 0.22);
+  border-radius: 26px;
+  pointer-events: none;
+}
+
+.dark .portrait-outline {
+  border-color: rgb(129 140 248 / 0.26);
+}
+
+.portrait-ring {
+  background-image: linear-gradient(
+    135deg,
+    rgb(67 56 202 / 0.62),
+    rgb(124 58 237 / 0.56) 52%,
+    rgb(8 145 178 / 0.44)
+  );
+  box-shadow:
+    var(--sh-sm),
+    0 16px 34px -22px rgb(67 56 202 / 0.4);
+  transition:
+    box-shadow 600ms var(--ease-out-expo),
+    filter 600ms var(--ease-out-expo);
+}
+
+.dark .portrait-ring {
+  background-image: linear-gradient(
+    135deg,
+    rgb(129 140 248 / 0.68),
+    rgb(167 139 250 / 0.6) 52%,
+    rgb(34 211 238 / 0.48)
+  );
+  box-shadow:
+    0 1px 3px rgb(0 0 0 / 0.4),
+    0 18px 40px -24px rgb(79 70 229 / 0.45);
+}
+
+.portrait-img {
+  transform-origin: 50% 22%;
+  transition: transform 700ms var(--ease-out-expo);
+}
+
+/* Discreet watermark: soft dual-tone shadow keeps the handwritten name legible
+   over the photo without adding a backing card. */
+.portrait-signature {
+  text-shadow:
+    0 1px 2px rgb(2 6 23 / 0.55),
+    0 0 6px rgb(226 232 240 / 0.35);
+}
+
+.portrait-signature svg {
+  filter: drop-shadow(0 1px 1.5px rgb(2 6 23 / 0.5));
+}
+
+/* ---------------------------------------------------------------
+   Skill badges - authentic per-technology brand accents
+   (colours are supplied inline as --tech-l / --tech-d per badge)
+--------------------------------------------------------------- */
+.tech-mark {
+  color: var(--tech-l, currentColor);
+}
+
+.dark .tech-mark {
+  color: var(--tech-d, var(--tech-l, currentColor));
+}
+
+.tech-badge:hover {
+  border-color: var(--tech-l, var(--c-brand));
+}
+
+.dark .tech-badge:hover {
+  border-color: var(--tech-d, var(--tech-l, var(--c-brand)));
+}
+
+/* ---------------------------------------------------------------
+   Project cards - hover elevation defaults to motion-free when the
+   visitor prefers reduced motion (transforms are cancelled below).
+--------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card .project-visual {
+    transition: none;
+  }
+
+  .project-card:hover {
+    translate: none;
+  }
+
+  .project-card:hover .project-visual {
+    scale: none;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Selected-projects grid - max two columns; an odd, trailing card
+   is centred automatically, for any number of projects (1..N).
+--------------------------------------------------------------- */
+@media (min-width: 768px) {
+  .projects-grid > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: calc(50% - 0.75rem);
+    justify-self: center;
+  }
+}
+
+/* Desktop-only hover enhancement (touch shows the animated glow by default) */
+@media (hover: hover) and (pointer: fine) {
+  .portrait-wrap:hover .portrait-aura {
+    opacity: 0.8;
+  }
+
+  .dark .portrait-wrap:hover .portrait-aura {
+    opacity: 0.72;
+  }
+
+  .portrait-wrap:hover .portrait-ring {
+    filter: brightness(1.06);
+    box-shadow:
+      0 14px 44px -16px rgb(67 56 202 / 0.5),
+      0 14px 44px -18px rgb(124 58 237 / 0.42);
+  }
+
+  .portrait-wrap:hover .portrait-img {
+    transform: scale(1.03);
+  }
+}
+
+@keyframes portrait-aura {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -1.8%, 0) scale(1.045);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait-aura {
+    animation: none;
+    will-change: auto;
+  }
+
+  .portrait-img,
+  .portrait-ring {
+    transition: none;
+  }
+
+  .portrait-wrap:hover .portrait-img {
+    transform: none;
+  }
 }
 
 /* Section rhythm */

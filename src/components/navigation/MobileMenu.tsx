@@ -1,8 +1,9 @@
 import { useEffect, useRef, type RefObject } from 'react'
-import { X } from 'lucide-react'
+import { Download, X } from 'lucide-react'
 import { navItems } from '../../data/nav'
 import { useI18n } from '../../i18n/context'
 import { cn } from '../../lib/cn'
+import { CV_FILE_HREF, CV_FILE_NAME } from '../../lib/cvFile'
 import { LanguageSwitcher } from '../ui/LanguageSwitcher'
 
 interface MobileMenuProps {
@@ -68,14 +69,17 @@ export function MobileMenu({ open, activeId, onClose, returnFocusTo }: MobileMen
   return (
     <div
       ref={panelRef}
+      id="mobile-menu"
       role="dialog"
       aria-modal="true"
       aria-label={t.ui.navbar.mobileMenuAria}
-      className="menu-panel fixed inset-0 z-50 flex flex-col overflow-y-auto overscroll-contain bg-surface px-6 pt-[calc(1rem+env(safe-area-inset-top))] pb-[calc(2rem+env(safe-area-inset-bottom))] lg:hidden"
+      className="menu-panel fixed inset-0 z-[60] flex flex-col overflow-y-auto overscroll-contain bg-surface px-6 pt-[calc(1rem+env(safe-area-inset-top))] pb-[calc(2rem+env(safe-area-inset-bottom))] lg:hidden"
     >
       <div className="flex items-center justify-between">
-        <span className="font-display text-lg font-extrabold text-ink">
-          Salah Eddine<span className="text-brand">.</span>
+        <span className="min-w-0 font-signature text-xl font-semibold leading-none tracking-tight text-ink">
+          <span className="block truncate whitespace-nowrap">
+            Salah Eddine <span className="text-brand">Benyich</span>
+          </span>
         </span>
         <button
           ref={closeRef}
@@ -106,6 +110,17 @@ export function MobileMenu({ open, activeId, onClose, returnFocusTo }: MobileMen
             </li>
           ))}
         </ul>
+
+        <a
+          href={CV_FILE_HREF}
+          download={CV_FILE_NAME}
+          onClick={onClose}
+          className="menu-item mt-5 flex w-full items-center gap-2.5 rounded-md border border-brand/35 bg-brand-soft/60 px-4 py-3 text-sm font-semibold text-brand transition-colors duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-brand-soft"
+          style={{ animationDelay: `${navItems.length * 45}ms` }}
+        >
+          <Download size={17} aria-hidden="true" />
+          {t.ui.navbar.cvLabel}
+        </a>
       </nav>
 
       <div className="menu-item space-y-3 border-t border-line pt-6" style={{ animationDelay: '300ms' }}>

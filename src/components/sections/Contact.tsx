@@ -1,17 +1,20 @@
 import { Mail, MapPin, Phone } from 'lucide-react'
+import { useDiscussion } from '../../context/discussionContext'
 import { useI18n } from '../../i18n/context'
 import { Section } from '../layout/Section'
 import { SectionHeader } from '../layout/SectionHeader'
 import { Button } from '../ui/Button'
+import { CallButton } from '../ui/CallButton'
 import { Card } from '../ui/Card'
 import { Reveal } from '../ui/Reveal'
 
 export function Contact() {
   const { t, cv } = useI18n()
+  const { project, clear } = useDiscussion()
   const { profile } = cv
 
   const mailtoHref = `mailto:${profile.email}?subject=${encodeURIComponent(
-    t.ui.contact.title,
+    project ? `${t.ui.projects.discussSubject} ${project}` : t.ui.contact.emailSubject,
   )}`
 
   return (
@@ -23,25 +26,36 @@ export function Contact() {
         description={t.ui.contact.description}
       />
 
+      {project && (
+        <div
+          id="contact-topic"
+          tabIndex={-1}
+          className="mb-8 flex flex-col gap-3 rounded-md border border-brand/30 bg-brand-soft/60 px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <p className="text-sm text-ink">
+            {t.ui.contact.discussionKicker.replace('{project}', project)}
+          </p>
+          <button
+            type="button"
+            onClick={clear}
+            className="self-start text-sm font-medium text-brand underline-offset-4 transition-colors duration-200 hover:underline sm:self-auto"
+          >
+            {t.ui.contact.clearTopic}
+          </button>
+        </div>
+      )}
+
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
         <Reveal className="space-y-6 lg:self-center">
-          <div className="flex flex-col gap-3 sm:flex-row">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <Button href={mailtoHref} size="lg" className="w-full sm:w-auto">
               <Mail size={17} aria-hidden="true" />
               {t.ui.contact.emailBtn}
             </Button>
-            <Button
-              href={profile.phoneHref}
-              variant="secondary"
-              size="lg"
-              className="w-full sm:w-auto"
-            >
-              <Phone size={17} aria-hidden="true" />
-              {t.ui.contact.callBtn}
-            </Button>
+            <CallButton phone={profile.phone} phoneHref={profile.phoneHref} />
           </div>
 
-          <p className="max-w-[55ch] text-sm text-ink-2">
+          <p className="max-w-[55ch] text-sm leading-relaxed text-ink-2">
             {t.ui.contact.availability.replace('{location}', profile.location)}
           </p>
         </Reveal>

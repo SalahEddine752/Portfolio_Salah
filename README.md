@@ -47,7 +47,7 @@ src/
 ## Personnalisation
 
 Tout le contenu éditable est centralisé dans `src/data/cv.ts`.
-Le CV téléchargeable se trouve dans `public/CV_Benyich_SalahEddine.pdf`.
+Le CV téléchargeable se trouve dans `public/CV_Professionnel_SalahEddine_Benyich.pdf`.
 
 ## Déploiement
 

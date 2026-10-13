@@ -1,6 +1,7 @@
 import { LayoutGrid, Mail } from 'lucide-react'
 import { useI18n } from '../../i18n/context'
 import { Button } from '../ui/Button'
+import { ProfileSignature } from '../ui/ProfileSignature'
 import { Reveal } from '../ui/Reveal'
 import { SocialLinks } from '../ui/SocialLinks'
 import { TechStack } from '../ui/TechStack'
@@ -17,9 +18,9 @@ export function Hero() {
     >
       <div className="container-site">
         {/* Hero blends into the page background — theme tokens, no dedicated panel */}
-        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,27.5rem)] lg:gap-12">
+        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,25.5rem)] lg:gap-12">
           {/* Identity & content */}
-          <div>
+          <div className="order-2 lg:order-1">
             <Reveal>
               <p className="mb-5 flex items-center gap-3 font-mono text-[0.72rem] font-medium tracking-[0.16em] text-brand uppercase">
                 <span aria-hidden="true" className="h-px w-8 bg-brand/60" />
@@ -84,22 +85,32 @@ export function Hero() {
           </div>
 
           {/* Professional portrait */}
-          <Reveal delay={160}>
-            <div className="mx-auto w-full max-w-xs sm:max-w-[26rem] lg:max-w-none">
-              <div className="overflow-hidden rounded-xl border border-line bg-surface shadow-[var(--sh-sm)]">
-                <div className="aspect-[3/4] w-full">
-                  <img
-                    src="/images/portrait-1120.jpg"
-                    srcSet="/images/portrait-620.jpg 620w, /images/portrait-1120.jpg 1120w"
-                    sizes="(min-width: 1024px) 440px, (min-width: 640px) 416px, 320px"
-                    alt={t.ui.hero.portraitAlt}
-                    width={1120}
-                    height={840}
-                    loading="eager"
-                    decoding="async"
-                    fetchPriority="high"
-                    className="h-full w-full object-cover object-top"
-                  />
+          <Reveal delay={160} className="order-1 lg:order-2">
+            <div className="mx-auto w-full max-w-[15rem] sm:max-w-[24rem] lg:max-w-none">
+              <div className="portrait-wrap relative">
+                <div
+                  aria-hidden="true"
+                  className="portrait-aura pointer-events-none absolute -inset-3 -z-10 rounded-[2rem]"
+                />
+                <div aria-hidden="true" className="portrait-outline" />
+                <div className="portrait-ring rounded-xl p-px">
+                  <div className="relative overflow-hidden rounded-[19px] bg-surface">
+                    <div className="aspect-[3/4] w-full">
+                      <img
+                        src="/images/portrait-1120.jpg"
+                        srcSet="/images/portrait-620.jpg 620w, /images/portrait-1120.jpg 1120w"
+                        sizes="(min-width: 1024px) 408px, (min-width: 640px) 384px, 240px"
+                        alt={t.ui.hero.portraitAlt}
+                        width={1120}
+                        height={840}
+                        loading="eager"
+                        decoding="async"
+                        fetchPriority="high"
+                        className="portrait-img h-full w-full object-cover object-top"
+                      />
+                    </div>
+                    <ProfileSignature className="absolute end-3 bottom-3 z-[2] sm:end-4 sm:bottom-4 lg:end-5 lg:bottom-5" />
+                  </div>
                 </div>
               </div>
             </div>

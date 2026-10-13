@@ -43,7 +43,7 @@ export interface Education {
   period: string
 }
 
-export type ProjectVisualKind = 'b2b' | 'tva' | 'cinema'
+export type ProjectVisualKind = 'b2b' | 'tva' | 'pos'
 
 export interface Project {
   id: string
@@ -129,7 +129,7 @@ export const skillGroups: SkillGroup[] = [
   {
     id: 'tools',
     label: 'Outils',
-    items: ['Git', 'GitHub', 'VS Code', 'Postman', 'Microsoft Office'],
+    items: ['Git', 'GitHub', 'VS Code', 'Postman', 'Microsoft Office', 'XAMPP', 'PyCharm'],
   },
 ]
 
@@ -240,23 +240,28 @@ export const projects: Project[] = [
     liveUrl: null,
   },
   {
-    id: 'smartcinema',
-    name: 'SmartCinema',
-    type: 'Application de réservation',
-    subtitle: 'Réservation de films et gestion des séances',
+    id: 'librapos',
+    name: 'LibraPOS',
+    type: 'Gestion de librairie & point de vente',
+    subtitle: 'Gestion de librairie et point de vente (POS)',
     description:
-      'Application de réservation de films avec gestion des séances et une interface d’administration dédiée.',
-    features: ['Réservation de films', 'Gestion des séances', "Interface d'administration"],
-    highlights: [
-      'Backend Laravel et front-end React.js',
-      'Base de données MySQL',
-      'Composants d’interface shadcn/ui avec Tailwind CSS',
-      'Interface d’administration pour la gestion des séances',
+      'Développement d’une application Full Stack de gestion de librairie avec gestion des produits et intégration de la lecture de codes-barres.',
+    features: [
+      'Gestion des produits de la librairie',
+      'Lecture de codes-barres',
+      'Point de vente (POS)',
     ],
-    stack: ['Laravel', 'React.js', 'MySQL', 'Tailwind CSS', 'shadcn/ui'],
+    highlights: [
+      'Application Full Stack avec Laravel et Vue.js',
+      'Conception de la base de données MySQL',
+      'Intégration du frontend Vue.js avec le backend Laravel',
+      'Interface responsive avec Tailwind CSS',
+      'Logique côté client en JavaScript',
+    ],
+    stack: ['Laravel 12', 'Vue.js', 'MySQL', 'PHP', 'JavaScript', 'Tailwind CSS'],
     context: null,
     status: null,
-    visual: 'cinema',
+    visual: 'pos',
     featured: true,
     repoUrl: null,
     liveUrl: null,

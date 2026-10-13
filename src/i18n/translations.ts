@@ -58,6 +58,7 @@ export interface UiStrings {
   navbar: {
     mainNavAria: string
     cvAria: string
+    cvLabel: string
     openMenu: string
     closeMenu: string
     mobileMenuAria: string
@@ -113,6 +114,8 @@ export interface UiStrings {
     source: string
     discuss: string
     discussSubject: string
+    previewNote: string
+    previewAlt: string
   }
   services: {
     aria: string
@@ -136,11 +139,19 @@ export interface UiStrings {
     title: string
     description: string
     emailBtn: string
+    emailSubject: string
     callBtn: string
     availability: string
     emailLabel: string
     phoneLabel: string
+    phoneGroupLabel: string
+    copyNumber: string
+    copyNumberShort: string
+    copied: string
+    phoneCopied: string
     locationLabel: string
+    discussionKicker: string
+    clearTopic: string
   }
   social: {
     linkedin: string
@@ -283,17 +294,18 @@ const contentEn: LocalizedContent = {
         'Interface with Bootstrap 5',
       ],
     },
-    smartcinema: {
-      type: 'Booking application',
-      subtitle: 'Movie booking and showtime management',
+    librapos: {
+      type: 'Bookstore management & point of sale',
+      subtitle: 'Bookstore management and point of sale (POS)',
       description:
-        'Movie booking application with showtime management and a dedicated admin interface.',
-      features: ['Movie booking', 'Showtime management', 'Admin interface'],
+        'Development of a Full Stack bookstore management application with product management and integrated barcode scanning.',
+      features: ['Bookstore product management', 'Barcode scanning', 'Point of sale (POS)'],
       highlights: [
-        'Laravel backend and React.js front-end',
-        'MySQL database',
-        'shadcn/ui interface components with Tailwind CSS',
-        'Admin interface for managing showtimes',
+        'Full Stack application with Laravel and Vue.js',
+        'MySQL database design',
+        'Vue.js front-end integrated with the Laravel backend',
+        'Responsive interface with Tailwind CSS',
+        'Client-side logic in JavaScript',
       ],
     },
   },
@@ -423,16 +435,18 @@ const contentAr: LocalizedContent = {
         'واجهة مع Bootstrap 5',
       ],
     },
-    smartcinema: {
-      type: 'تطبيق حجز',
-      subtitle: 'حجز الأفلام وتدبير العروض',
-      description: 'تطبيق لحجز الأفلام مع تدبير العروض وواجهة إدارة مخصصة.',
-      features: ['حجز الأفلام', 'تدبير العروض', 'واجهة الإدارة'],
+    librapos: {
+      type: 'تدبير المكتبة ونقطة البيع',
+      subtitle: 'تدبير المكتبة ونقطة البيع (POS)',
+      description:
+        'تطوير تطبيق Full Stack لتدبير المكتبة مع إدارة المنتجات ودمج قراءة الرموز الشريطية (الباركود).',
+      features: ['إدارة منتجات المكتبة', 'قراءة الرموز الشريطية (الباركود)', 'نقطة البيع (POS)'],
       highlights: [
-        'واجهة خلفية Laravel وواجهة أمامية React.js',
-        'قاعدة بيانات MySQL',
-        'مكونات واجهة shadcn/ui مع Tailwind CSS',
-        'واجهة إدارة لتدبير العروض',
+        'تطبيق Full Stack باستخدام Laravel و Vue.js',
+        'تصميم قاعدة بيانات MySQL',
+        'دمج واجهة Vue.js الأمامية مع الواجهة الخلفية Laravel',
+        'واجهة متجاوبة مع Tailwind CSS',
+        'منطق جانب العميل بلغة JavaScript',
       ],
     },
   },
@@ -490,7 +504,8 @@ const uiFr: UiStrings = {
   },
   navbar: {
     mainNavAria: 'Navigation principale',
-    cvAria: 'Ouvrir le CV de Benyich Salah Eddine (PDF, nouvel onglet)',
+    cvAria: 'Télécharger le CV de Benyich Salah Eddine (PDF)',
+    cvLabel: 'Télécharger mon CV',
     openMenu: 'Ouvrir le menu',
     closeMenu: 'Fermer le menu',
     mobileMenuAria: 'Menu de navigation',
@@ -548,6 +563,8 @@ const uiFr: UiStrings = {
     source: 'Code source',
     discuss: 'Discuter de ce projet',
     discussSubject: 'À propos du projet',
+    previewNote: 'Aperçu conceptuel de l’interface — illustration, non contractuel.',
+    previewAlt: 'Aperçu conceptuel de l’interface du projet {project}',
   },
   services: {
     aria: 'Services',
@@ -571,11 +588,19 @@ const uiFr: UiStrings = {
     title: 'Travaillons ensemble.',
     description: 'Une offre de stage, un poste junior ou un projet à confier ? Écrivez-moi.',
     emailBtn: 'Envoyer un e-mail',
+    emailSubject: 'Prise de contact — Portfolio',
     callBtn: 'Appeler',
     availability: 'Je suis disponible pour des opportunités en développement web full stack à {location} et à distance.',
     emailLabel: 'E-mail',
     phoneLabel: 'Téléphone',
+    phoneGroupLabel: 'Numéro de téléphone',
+    copyNumber: 'Copier le numéro de téléphone',
+    copyNumberShort: 'Copier le numéro',
+    copied: 'Copié',
+    phoneCopied: 'Numéro de téléphone copié dans le presse-papiers.',
     locationLabel: 'Localisation',
+    discussionKicker: 'Vous souhaitez discuter du projet « {project} ».',
+    clearTopic: 'Retirer le sujet',
   },
   social: {
     linkedin: 'LinkedIn',
@@ -607,7 +632,8 @@ const uiEn: UiStrings = {
   },
   navbar: {
     mainNavAria: 'Main navigation',
-    cvAria: "Open Benyich Salah Eddine's CV (PDF, new tab)",
+    cvAria: "Download Benyich Salah Eddine's CV (PDF)",
+    cvLabel: 'Download my CV',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     mobileMenuAria: 'Navigation menu',
@@ -665,6 +691,8 @@ const uiEn: UiStrings = {
     source: 'Source code',
     discuss: 'Discuss this project',
     discussSubject: 'About the project',
+    previewNote: 'Conceptual UI preview — illustrative, not a live screenshot.',
+    previewAlt: 'Conceptual UI preview of the {project} project',
   },
   services: {
     aria: 'Services',
@@ -688,12 +716,20 @@ const uiEn: UiStrings = {
     title: "Let's work together.",
     description: 'An internship offer, a junior position or a project to hand over? Write to me.',
     emailBtn: 'Send an email',
+    emailSubject: 'Portfolio contact — Hello',
     callBtn: 'Call',
     availability:
       'I am available for full stack web development opportunities in {location} and remotely.',
     emailLabel: 'Email',
     phoneLabel: 'Phone',
+    phoneGroupLabel: 'Phone number',
+    copyNumber: 'Copy phone number',
+    copyNumberShort: 'Copy number',
+    copied: 'Copied',
+    phoneCopied: 'Phone number copied to clipboard.',
     locationLabel: 'Location',
+    discussionKicker: 'You’d like to discuss the “{project}” project.',
+    clearTopic: 'Clear topic',
   },
   social: {
     linkedin: 'LinkedIn',
@@ -725,7 +761,8 @@ const uiAr: UiStrings = {
   },
   navbar: {
     mainNavAria: 'التنقل الرئيسي',
-    cvAria: 'فتح السيرة الذاتية لـ Benyich Salah Eddine (PDF، تبويب جديد)',
+    cvAria: 'تحميل السيرة الذاتية لـ Benyich Salah Eddine (PDF)',
+    cvLabel: 'تحميل سيرتي الذاتية',
     openMenu: 'فتح القائمة',
     closeMenu: 'إغلاق القائمة',
     mobileMenuAria: 'قائمة التنقل',
@@ -782,6 +819,8 @@ const uiAr: UiStrings = {
     source: 'المصدر',
     discuss: 'ناقش هذا المشروع',
     discussSubject: 'بخصوص المشروع',
+    previewNote: 'معاينة تصورية للواجهة — توضيحية وليست لقطة فعلية.',
+    previewAlt: 'معاينة تصورية لواجهة مشروع {project}',
   },
   services: {
     aria: 'الخدمات',
@@ -805,11 +844,19 @@ const uiAr: UiStrings = {
     title: 'لنعمل معًا.',
     description: 'عرض تدريب، منصب مبتدئ أو مشروع تريد تسليمه؟ راسلني.',
     emailBtn: 'إرسال بريد إلكتروني',
+    emailSubject: 'تواصل عبر البورتفوليو',
     callBtn: 'اتصال',
     availability: 'أنا متاح لفرص تطوير الويب فول ستاك في {location} وعن بُعد.',
     emailLabel: 'البريد الإلكتروني',
     phoneLabel: 'الهاتف',
+    phoneGroupLabel: 'رقم الهاتف',
+    copyNumber: 'نسخ رقم الهاتف',
+    copyNumberShort: 'نسخ الرقم',
+    copied: 'تم النسخ',
+    phoneCopied: 'تم نسخ رقم الهاتف إلى الحافظة.',
     locationLabel: 'الموقع',
+    discussionKicker: 'ترغب في مناقشة مشروع «{project}».',
+    clearTopic: 'إزالة الموضوع',
   },
   social: {
     linkedin: 'لينكد إن',
